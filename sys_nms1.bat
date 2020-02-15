@@ -1,0 +1,1 @@
+C:\snmlipv6\snml.exe nolog C:\snmlipv6\sys\sys_nms1.txt

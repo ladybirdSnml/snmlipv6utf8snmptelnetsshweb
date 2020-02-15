@@ -1,0 +1,1 @@
+C:\snmlipv6\snml.exe nolog C:\snmlipv6\smtp\smtp_nms1.txt

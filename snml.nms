@@ -1,0 +1,124 @@
+﻿screen.set font {Arial} size {16}
+screen.text at point {140}  {60} string {Simple Network Management Language  (SNML)} 
+
+screen.line from point {10} {80} to point {630} {80}
+screen.set font {Arial} size {12}
+#screen.play midi {cdefgab 1234567} 
+
+var {x} value { 10}
+var {y} value { 300}
+
+macro.call {draw_ladybird} 
+screen.set color red {0}  green {0}  blue {255} 
+screen.text at point {10}  {120} string {S N M P ( Simple Network Management Protocol )} 
+screen.set color red {0}  green {0}  blue {0} 
+screen.text at point {50}  {145} string {Simple Network Management Protocol (SNMP) is an application-layer protocol used to manage and } 
+screen.line from point {50} {160} to point {630} {160}
+screen.text at point {50}  {165} string {monitor network devices and their functions. SNMP provides a common language for network }
+screen.line from point {50} {180} to point {630} {180}
+screen.text at point {50}  {185} string {devices to relay management information within single- and multivendor environments in a local }
+screen.line from point {50} {200} to point {630} {200}
+screen.text at point {50}  {205} string {area network (LAN) or wide area network (WAN).}
+screen.line from point {50} {220} to point {630} {220}
+
+screen.set color red {0}  green {0}  blue {255} 
+screen.text at point {10}  {225} string {S N M L ( Simple Network Management Language )} 
+screen.set color red {0}  green {0}  blue {0} 
+screen.text at point {50}  {245} string {Simple Network Management Language (SNML) is a scripting language similar to natural language. }
+screen.line from point {50} {260} to point {630} {260}
+screen.text at point {50}  {265} string {It uses snmp, telnet, ping, dns, arp, ssh, tcp, udp, web and other protocols to access network devices. }
+screen.line from point {50} {280} to point {630} {280}
+screen.text at point {130}  {285} string {The built-in SMTP protocol is used to send alerts and other mail. It supports excel, mysql }
+screen.line from point {130} {300} to point {630} {300}
+screen.text at point {130}  {305} string {and SQLite database to access network management data.}
+screen.line from point {130} {325} to point {630} {325}
+
+screen.set color red {0}  green {0}  blue {255} 
+screen.text at point {200}  {360} string {Version: snml8.13(ladybird-ipv6-20200205) ipv6&utf8}
+screen.set color red {0}  green {0}  blue {0} 
+screen.text at point {200}  {380} string {TecSupport Email 1：snml_ladybird@protonmail.com}
+screen.text at point {200}  {400} string {TecSupport Email 2：snml_ladybird@hotmail.com}
+screen.set color red {0}  green {0}  blue {255} 
+screen.text at point {10}  {440} string {Now remember, Pinocchio, be a good boy. And always let your conscience be your guide.}
+screen.text at point {10}  {460} string {Love is the flame of life, without it, everything becomes dark. -- Romain Rolland. }
+
+screen.save to file {C:\snmlipv6\screen\snml1_ipv6utf8.png}  from point  {0}   {0}  to point  {801}   {481} 
+run.end
+
+macro.begin {draw_ladybird} 	
+	#var {x} value {0}
+	#var {y} value {0}	
+	screen.set mode {stroke}
+	screen.set color red {0}  green {0}  blue {0} 
+	#screen.rect from point {0}   {0}  to point {127}   {127} 
+	screen.set color red {255}  green {0}  blue {0} 
+	screen.set mode {fill}
+
+	var  {x1}  value number  {~x~+60} 
+	var  {y1}  value number  {~y~+78} 
+	screen.arc at point  {~x1~}   {~y1~}  radius {50}  from {0}  to {360} 
+	screen.set color red {0}  green {0}  blue {0} 
+
+	var  {x1}  value number  {~x~+60} 
+	var  {y1}  value number  {~y~+33} 
+	screen.arc at point   {~x1~}   {~y1~}  radius {25}  from {180}  to {360} 
+
+	var  {x1}  value number  {~x~+60} 
+	var  {y1}  value number  {~y~+28} 
+	screen.set color red {0}  green {0}  blue {0} 
+	screen.arc at point {~x1~}   {~y1~}  radius {100}  from {85}  to {95} 
+
+	var  {x1}  value number  {~x~+60} 
+	var  {y1}  value number  {~y~+33} 
+	var  {x2}  value number  {~x~+80} 
+	var  {y2}  value number  {~y~+5}
+
+	screen.line from point  {~x1~}   {~y1~}  to point  {~x2~}   {~y2~} 
+	var  {x2}  value number  {~x~+40} 
+	screen.line from point  {~x1~}   {~y1~}  to point  {~x2~}   {~y2~} 
+
+	var  {x1}  value number  {~x~+80} 
+	var  {y1}  value number  {~y~+5} 
+	screen.arc at point {~x1~}   {~y1~}  radius {2}  from {0}  to {360} 
+	var  {x1}  value number  {~x~+40} 
+	screen.arc at point {~x1~}   {~y1~}  radius {2}  from {0}  to {360} 
+
+	screen.set color red {255}  green {255}  blue {255} 
+
+	var  {x1}  value number  {~x~+48} 
+	var  {y1}  value number  {~y~+20} 
+	screen.arc at point  {~x1~}   {~y1~}  radius {5}  from {0}  to {360} 
+	var  {x1}  value number  {~x~+72} 
+	screen.arc at point  {~x1~}   {~y1~}  radius {5}  from {0}  to {360} 
+
+	screen.set color red {0}  green {0}  blue {0} 
+
+	var  {x1}  value number  {~x~+48} 
+	var  {y1}  value number  {~y~+19} 
+	screen.arc at point {~x1~}   {~y1~}  radius {3}  from {0}  to {360} 
+
+	var  {x1}  value number  {~x~+72} 
+	screen.arc at point {~x1~}   {~y1~}  radius {3}  from {0}  to {360} 
+
+	var  {x1}  value number  {~x~+60} 
+	var  {y1}  value number  {~y~+43} 
+	screen.arc at point {~x1~}   {~y1~}  radius {10}  from {0}  to {360} 
+
+	var  {x1}  value number  {~x~+90} 
+	var  {y1}  value number  {~y~+59} 
+	screen.arc at point {~x1~}   {~y1~}  radius {8}  from {0}  to {360} 
+	var  {x1}  value number  {~x~+30} 
+	screen.arc at point {~x1~}   {~y1~}  radius {8}  from {0}  to {360} 
+
+	var  {x1}  value number  {~x~+75} 
+	var  {y1}  value number  {~y~+73} 
+	screen.arc at point {~x1~}   {~y1~}   radius {8}  from {0}  to {360} 
+	var  {x1}  value number  {~x~+45} 
+	screen.arc at point {~x1~}   {~y1~}   radius {8}  from {0}  to {360} 
+
+	var  {x1}  value number  {~x~+90} 
+	var  {y1}  value number  {~y~+100} 
+	screen.arc at point {~x1~}   {~y1~}  radius {8}  from {0}  to {360} 
+	var  {x1}  value number  {~x~+30} 
+	screen.arc at point {~x1~}   {~y1~}  radius {8}  from {0}  to {360} 
+macro.end

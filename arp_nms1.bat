@@ -1,0 +1,1 @@
+C:\snmlipv6\snml.exe nolog C:\snmlipv6\arp\arp_nms1.txt

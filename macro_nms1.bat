@@ -1,0 +1,1 @@
+C:\snmlipv6\snml.exe nolog C:\snmlipv6\macro\macro_nms1.txt

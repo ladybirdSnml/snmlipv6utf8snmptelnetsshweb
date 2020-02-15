@@ -1,0 +1,1 @@
+copy /Y C:\snml\Release\snml.exe C:\snmlipv6\snml.exe
