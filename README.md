@@ -1,3 +1,3 @@
-## Welcome to GitHub Pages
+## Welcome to GitHub Pages: Simple Network Management Language (SNML)
 
-You can use the [editor on GitHub](https://github.com/ladybirdSnml/snmlipv6utf8snmptelnetsshweb/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+      Simple Network Management Language (SNML) is a scripting language similar to natural language. It uses snmp, telnet, ping, dns, arp, ssh, tcp, udp, web and other protocols to access network devices. The built-in SMTP protocol is used to send alerts and other mail. It supports excel， mysql and SQLite database to access network management data.
