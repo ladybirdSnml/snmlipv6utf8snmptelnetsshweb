@@ -1,0 +1,31 @@
+screen.text at point {250}  {30} string {1. Arp Test} 
+var {v_ttl} value {0} 
+var {v_y} value {60} 
+screen.text at point {50}  {~v_y~} string {IP Addr} 
+screen.line from point {10}  {75} to point {180}  {75} 
+screen.text at point {350}  {~v_y~} string {MAC Addr} 
+screen.line from point {200}  {75} to point {630}  {75} 
+
+var {v_ip1} value {192.168.186.128} 
+var {v_ip2} value {192.168.186.131} 
+var {v_ip3} value {192.168.186.132} 
+
+var {v_i} value {0} 
+var {v_y} value {80} 
+loop.begin
+	var {v_i} add number {1} 
+	var {v_y} add number {20} 
+	var {ip} copy var {v_ip~v_i~} 
+	var {v_time} value datetime 
+
+	screen.text at point {10}  {~v_y~} string {~v_i~} 
+	screen.text at point {50}  {~v_y~} string {~ip~} 
+	screen.text at point {400}  {~v_y~} string {~v_time~} 
+	arp.get var {arp_ip} ip {~ip~} 		
+	
+	screen.text at point {200}  {~v_y~} string {~arp_ip~} 	
+	if.var {v_i} >= {3} 
+			loop.exit
+	if.end
+loop.end
+run.end

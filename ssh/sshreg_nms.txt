@@ -1,0 +1,33 @@
+screen.text at point {150}  {30} string {15. ssh Test, Ssh needs a License. Please write email to get ssh.key  file.} 
+var {v_y} value {60} 
+
+screen.line from point {10}  {75} to point {630}  {75} 
+screen.line from point {10}  {425} to point {630}  {425} 
+
+
+screen.text at point {10}  {80} string {1. run ssh_req.bat  2. send email with file ssh_req.txt%0d%0a}
+screen.text at point {10}  {100} string {email1: ladybird_snml@protonmail.com, email2:  ladybird_snml@hotmail.com%0d%0a}
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+
+text.add {run.version=[~run.version~]%0d%0a}
+text.add {run.arg.1=[~run.arg.1~]%0d%0a}
+text.add {v_time=[~v_time~]%0d%0a}
+
+text.add {os.type=[~os.type~]%0d%0a}
+text.add {os.version=[~os.version~]%0d%0a}
+
+text.add {nic.ip=[~nic.ip~]%0d%0a}
+text.add {nic.description=[~nic.description~]%0d%0a}
+text.add {nic.mac=[~nic.mac~]%0d%0a}
+
+text.add {1. run ssh_req.bat  2. send email with file ssh_req.txt%0d%0a}
+text.add {email1: ladybird_snml@protonmail.com, email2:  ladybird_snml@hotmail.com%0d%0a}
+
+text.headpointer move to head
+text.tailpointer move to tail
+text.save append to file {C:\snmlipv6\ssh\ssh_req.txt}
+
+screen.text at point {120}  {180} string { File C:\snmlipv6\ssh\ssh_req.txt created ok!, total ~text.bytes~ bytes.}
+run.end

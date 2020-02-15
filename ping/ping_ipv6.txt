@@ -1,0 +1,44 @@
+screen.text at point {150}  {30} string {9.ping test (ipv6): ttl,size,roundtrip_time,ip} 
+
+var {v_ttl} value {0}
+var {v_y} value {60}
+screen.text at point {50}  {~v_y~} string {send ping request}
+screen.line from point {10} {75} to point {180} {75}
+screen.text at point {350}  {~v_y~} string {ping response}
+screen.line from point {200} {75} to point {630} {75}
+
+var {v_y} value {80}
+screen.text at point {10}  {~v_y~} string {Dest IP Addr}
+screen.text at point {110}  {~v_y~} string {TTL}
+screen.text at point {150}  {~v_y~} string {Bytes}
+
+screen.text at point {200}  {~v_y~} string {IP Addr}
+screen.text at point {400}  {~v_y~} string {ms}
+screen.text at point {450}  {~v_y~} string {ping.status}
+
+#run.set  loglevel {debug}
+dns.set ipmode {ipv6}
+#dns.get var {ip_addr} host {www.ipv6-test.com}
+
+var {ip_addr} value {FE80::1}
+
+var {v_ttl} value {0}
+var {v_y} value {80}
+var {v_sendbytes} value {1000}
+loop.begin
+	var {v_ttl} add number {1}
+	var {v_y} add number {20}
+	ping.ip {~ip_addr~} ttl  {~v_ttl~} size  {~v_sendbytes~}
+
+	screen.text at point {10}  {~v_y~} string {~ping.dest_ip~}
+	screen.text at point {110}  {~v_y~} string {~v_ttl~}
+	screen.text at point {150}  {~v_y~} string {~v_sendbytes~}
+	screen.text at point {200}  {~v_y~} string {~ping.reply_ip~}
+	screen.text at point {400}  {~v_y~} string {~ping.roundtrip_time_milliseconds~}
+	screen.text at point {450}  {~v_y~} string {~ping.status~}
+	if.var {v_ttl} > {16}
+		loop.exit
+	if.end
+loop.end
+
+run.end	

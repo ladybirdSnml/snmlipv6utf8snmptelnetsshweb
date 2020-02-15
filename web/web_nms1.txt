@@ -1,0 +1,44 @@
+screen.text at point {150}  {30} string {16. Web Test} 
+
+screen.text at point {10}  {55} string {No.} 
+screen.text at point {100}  {55} string {github,snml2019.eu5.org web demo}
+screen.line from point {10}  {75} to point {630}  {75} 
+var {i} value {0} 
+var {x} value {0} 
+var {y} value {0}
+
+var {i} add number {1} 
+var {t1} value datetime
+var {y} value number {70+28*~i~}
+screen.text at point {5}  {~y~} string {1. http://snml2019.eu5.org/index1.php} 
+var {i} add number {1} 
+var {t1} value datetime
+var {y} value number {70+28*~i~}
+run.set loglevel {debug}
+web.open  {http://snml2019.eu5.org/index1.php}
+web.add var {nic.mac}
+web.get
+
+text.headpointer move to head
+text.tailpointer move to tail
+text.save to file {C:\snmlipv6\web\web_out_snml.eu5.txt}
+screen.text at point {80}  {~y~} string {~t1~, text.bytes = ~text.bytes~ bytes.} 
+
+var {i} add number {1} 
+var {t1} value datetime
+var {y} value number {70+28*~i~}
+screen.text at point {5}  {~y~} string {2. https://github.com/snml2019/snml/blob/master/snmlVer.txt} 
+
+web.open  {https://github.com/snml2019/snml/blob/master/snmlVer.txt}
+web.get
+
+text.headpointer move to head
+text.tailpointer move to tail
+text.save to file {C:\snmlipv6\web\web_out_github.txt}
+var {i} add number {1} 
+var {y} value number {70+28*~i~}
+screen.text at point {80}  {~y~} string {~t1~, text.bytes = ~text.bytes~ bytes.} 
+
+web.close
+
+run.end

@@ -1,0 +1,25 @@
+var {v_time} value datetime 
+screen.text at point {10}  {30} string {2. telnet  ipv4 (192.168.186.132:23)  test , datetime: ~v_time~}
+
+telnet.connect ip {192.168.186.132} port {23} 	
+telnet.recv expect  {Username:} 
+telnet.send {cisco%0a} 
+telnet.recv expect  {Password} 	
+
+telnet.send {cisco%0a} 
+telnet.recv expect  {>} 
+telnet.send {enable%0a} 	
+telnet.set onrecv {More} send { }
+telnet.set delay {200} ms after per byte send
+telnet.send {show version%0a} 		
+telnet.recv for {5} seconds
+
+telnet.send {show run%0a} 		
+telnet.recv  for {5} seconds
+telnet.send {exit%0a} 	
+telnet.close
+
+var {v_time} value datetime 
+screen.text at point {10}  {60} string {telnet  tested end. datetime:~v_time~}
+
+run.end

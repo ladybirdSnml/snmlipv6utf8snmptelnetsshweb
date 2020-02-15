@@ -1,0 +1,37 @@
+screen.set color red {0} green {0} blue {0} 
+screen.text at point {150}  {30} string {14.1 udp.client (ipv4) Test} 
+var {v_y} value {60} 
+screen.text at point {10}  {~v_y~} string {No.         Time                   Server IP:Port} 
+screen.text at point {250}  {~v_y~} string {udp.recv text.bytes} 
+screen.line from point {10}  {75} to point {460}  {75} 
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+
+	
+loop.begin 
+
+	var {v_i} add number {1} 
+	var {v_y} add number {18} 
+	var {v_time} value datetime 
+	
+	var {server_port} value number {50000+~v_i~}
+	screen.text at point {10}  {~v_y~} string {~v_i~, ~v_time~  127.0.0.1:~server_port~} 
+	run.nms {C:\snmlipv6\udp\udp_server_ipv4_ipv6.nms ~server_port~}
+	run.set loglevel {debug}
+	udp.client connect ip {127.0.0.1} port {~server_port~} 
+	udp.send {udp.client:~v_time~} 
+	udp.send {%0d%0a04}
+	udp.send {client.end%0d%0a}
+	udp.recv {1} packets
+	udp.recv {2} seconds
+	udp.close	
+
+	screen.text at point {250}  {~v_y~} string {~text.bytes~} 
+	if.var {v_y} > {400}	
+		loop.exit
+	if.end
+
+loop.end
+
+run.end

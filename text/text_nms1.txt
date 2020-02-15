@@ -1,0 +1,66 @@
+﻿run.set loglevel {info}
+screen.set color red {0} green {0} blue {0} 
+screen.text at point {150}  {30} string {16、text test} 
+var {v_y} value {60} 
+screen.text at point {10}  {~v_y~} string {No.} 
+screen.text at point {100}  {~v_y~} string {9x9 multiplication table}
+screen.line from point {10}  {75} to point {630}  {75} 
+var {v_i} value {0} 
+var {v_x} value {0} 
+var {v_y} value {0} 
+var {x} value {0} 
+var {y} value {0}
+var {v_xy} value {0} 
+
+loop.begin 
+	var {v_y} add number {1} 
+	var {v_x} value {0}
+	var {y} value number {70+28*~v_y~}
+	screen.text at point {5}  {~y~} string {Line:~v_y~} 
+	text.add  {Line:~v_y~}
+	loop.begin 
+		var {v_x} add number {1} 
+		var {v_time} value datetime	
+		var {v_xy} value number {~v_x~*~v_y~}
+		var {v_xy}  adjust length {3} align {left}
+		
+		text.add {~v_x~*~v_y~=~v_xy~ }
+		
+		var {x} value number {~v_x~*50}
+		
+		screen.text at point {~x~}  {~y~} string {~v_x~*~v_y~=~v_xy~} 
+
+		if.var {v_x} >= {~v_y~}
+			
+			text.add {%0d%0a}	
+			loop.exit
+		if.end
+	loop.end
+	
+	text.tailpointer move to tail
+	text.headpointer move forward after {Line:~v_y~} 
+	
+	text.line get all words
+	#text.line get all words between {1} and {%0d} separated by { } 
+	text.get var {word_no2} word number  {2} 	
+	
+	if.var {v_y} >= {9}		
+		loop.exit
+	if.end
+loop.end
+
+text.headpointer move to head	
+text.tailpointer move to tail
+text.save to file {C:\snmlipv6\text\text99.txt}
+text.replace {*} with {x}
+text.headpointer move to head	
+text.tailpointer move to tail
+text.save to file {C:\snmlipv6\text\text99x.txt}
+
+text.replace {x} with {X}
+text.headpointer move to head	
+text.tailpointer move to tail
+text.save to file {C:\snmlipv6\text\text99X2.txt}
+
+
+run.end

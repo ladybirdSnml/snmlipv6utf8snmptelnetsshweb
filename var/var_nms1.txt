@@ -1,0 +1,24 @@
+var {myvar1} value {test1}
+var {myvar2} value number {(1+2)*3/4-5}
+var {myvar3} value datetime
+
+var {myvar4} copy var {myvar1}
+var {myvar5} copy var {myvar2}
+var {myvar6} copy var {myvar3} after {5} bytes length {5}
+
+var {myvar4} add {2}
+var {myvar5} add number {1}
+var {myvar6} replace {-} with {.}
+
+var {myvar7} copy var {myvar5} 
+var {myvar7} adjust length {10} align {right}
+
+screen.text at point {10}  {30} string {myvar1 = [~myvar1~]} 
+screen.text at point {10}  {50} string {myvar2 = [~myvar2~]} 
+screen.text at point {10}  {70} string {myvar3 = [~myvar3~]} 
+screen.text at point {10}  {90} string {myvar4 = [~myvar4~]} 
+screen.text at point {10}  {110} string {myvar5 = [~myvar5~]} 
+screen.text at point {10}  {130} string {myvar6 = [~myvar6~]} 
+screen.text at point {10}  {150} string {myvar7 = [~myvar7~]} 
+
+run.end

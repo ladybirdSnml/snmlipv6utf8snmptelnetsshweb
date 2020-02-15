@@ -1,0 +1,47 @@
+﻿screen.text at point {250}  {30} string {12. smtp Test: Send Mail} 
+
+var {v_time} value datetime 
+var {v_y} value {60} 
+
+
+screen.text at point {10}  {~v_y~} string {sina, Begin To Send A Mail: ~v_time~} 
+
+smtp.server {smtp.sina.com} port {25} username {xxxaaaaabbb@sina.com} password {myPassword}
+smtp.subject  {Test Send A Mail:~v_time~}   body   {Email Body%0a, Send Time: ~v_time~}   
+smtp.add  attachment  {C:\snmlipv6\excel\snml.xlsx}
+smtp.add  attachment  {C:\snmlipv6\text\text99.txt}
+run.set loglevel {debug}
+smtp.send to {myEmail@163.com}
+run.set loglevel {nolog}
+screen.text at point {300}  {~v_y~} string {Send Mail End.} 
+
+
+var {v_time} value datetime 
+var {v_y} add number {20} 
+
+screen.text at point {10}  {~v_y~} string {126, Begin To Send A Mail: ~v_time~} 
+
+smtp.server {smtp.126.com} port {25} username {xxxxx@126.com} password {smtp.pwd}
+smtp.subject  {Test Send A Mail:~v_time~}   body   {Email Body%0a, Send Time: ~v_time~}   
+smtp.add  attachment  {C:\snmlipv6\excel\snml.xlsx}
+smtp.add  attachment  {C:\snmlipv6\text\text99.txt}
+run.set loglevel {debug}
+smtp.send to {ladybird_snml@protonmail.com}
+run.set loglevel {nolog}
+screen.text at point {300}  {~v_y~} string {Send Mail End.} 
+
+
+var {v_time} value datetime 
+var {v_y} add number {20} 
+screen.text at point {10}  {~v_y~} string {163,Begin To Send A Mail: ~v_time~} 
+
+smtp.server {smtp.163.com} port {25} username {myEmail@163.com} password {myPassword}
+smtp.subject  {Test Send A Mail:~v_time~}   body   {Email Body%0a, Send Time: ~v_time~}   
+smtp.add  attachment  {C:\snmlipv6\excel\snml.xlsx}
+smtp.add  attachment  {C:\snmlipv6\text\text99.txt}
+run.set loglevel {debug}
+smtp.send to {xxxaaaaabbb@126.com}
+run.set loglevel {nolog}
+screen.text at point {300}  {~v_y~} string {Send Mail End.} 
+
+run.end

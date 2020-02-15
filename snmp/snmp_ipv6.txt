@@ -1,0 +1,43 @@
+screen.set color red {0} green {0} blue {0} 
+screen.text at point {150}  {30} string {10.snmp test (ipv6): snmp.open snmp.get snmp.getnext} 
+run.set loglevel {debug} 
+snmp.open version {2c} ip {fe80::2} port {161} password {cisco} 
+snmp.get var {v_snmp} oid {1.3.6.1.2.1.1.1.0} 
+screen.text at point {10}  {60} string {Cisco3725 ipv6:[fe80::2], snmp.get(1.3.6.1.2.1.1.1.0)=[~v_snmp~]} 
+
+var {v_y} value {140} 
+screen.text at point {10}  {~v_y~} string {No.} 
+screen.text at point {50}  {~v_y~} string {Test Method} 
+screen.line from point {10}  {155} to point {230}  {155} 
+screen.text at point {270}  {~v_y~} string {snmp.oid} 
+screen.line from point {250}  {155} to point {350}  {155} 
+screen.text at point {390}  {~v_y~} string {snmp.value} 
+screen.line from point {370}  {155} to point {630}  {155} 
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+
+
+var {snmp.oid} value  {1.3.6.1.2.1.1.1.0}
+loop.begin 
+
+	var {v_i} add number {1} 
+	var {v_y} add number {18} 
+	screen.text at point {10}  {~v_y~} string {~v_i~} 
+
+	screen.text at point {50}  {~v_y~} string {snmp.getnext(~snmp.oid~)} 
+	snmp.getnext oid {~snmp.oid~} 	
+	screen.text at point {250}  {~v_y~} string {~snmp.oid~} 
+	screen.text at point {370}  {~v_y~} string {~snmp.value~} 	
+
+	var {v_y} add number {18} 
+	snmp.get var {v_snmp} oid {~snmp.oid~} 
+	screen.text at point {50}  {~v_y~} string {snmp.get(~snmp.oid~)} 
+	
+	screen.text at point {370}  {~v_y~} string {~v_snmp~} 
+	
+	if.var {v_y} > {400}		
+		loop.exit
+	if.end
+loop.end
+run.end

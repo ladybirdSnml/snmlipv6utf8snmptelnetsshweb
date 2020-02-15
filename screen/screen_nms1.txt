@@ -1,0 +1,121 @@
+﻿screen.set font {Arial} size {16}
+screen.text at point {140}  {60} string {Simple Network Management Language  (SNML)} 
+
+screen.set font {华文行楷} size {24}
+screen.text at point {180}  {100} string {简单网络管理语言} 
+screen.line from point {10} {120} to point {630} {120}
+screen.set font {Arial} size {12}
+screen.play midi {cdefgab 1234567} 
+
+var {x} value { 10}
+var {y} value { 300}
+
+macro.call {draw_ladybird} 
+
+
+screen.text at point {10}  {180} string {术语1：简单网络管理协议S N M P（ Simple Network Management Protocol ）} 
+screen.text at point {10}  {230} string {术语2：简单网络管理语言 S N M L ( Simple Network Management Language )} 
+screen.text at point {200}  {350} string {版本：snml8.13(ladybird-ipv6-20200205)}
+screen.text at point {200}  {375} string {技术支持邮箱1：snml_ladybird@protonmail.com}
+screen.text at point {200}  {400} string {技术支持邮箱2：snml_ladybird@hotmail.com}
+screen.text at point {10}  {440} string {Now remember, Pinocchio, be a good boy. And always let your conscience be your guide.}
+screen.text at point {10}  {455} string {Love is the flame of life, without it, everything becomes dark. -- Romain Rolland. }
+screen.speak  {Now remember, Pinocchio, be a good boy. And always let your conscience be your guide.}
+screen.speak  {Love is the flame of life, without it, everything becomes dark. -- Romain Rolland. }
+
+screen.line from point {50} {220} to point {630} {220}
+screen.line from point {50} {265} to point {630} {265}
+screen.line from point {30} {290} to point {630} {290}
+screen.line from point {130} {315} to point {630} {315}
+run.set  loglevel {info}
+
+screen.speak {1、什么是简单网络管理协议S N M P（ Simple Network Management Protocol ）？} 
+
+screen.text at point {50}  {205} string {简单网络管理协议是可以管理不同厂家网络设备的简单通讯协议。} 
+screen.speak {简单网络管理协议是可以管理不同厂家网络设备的简单通讯协议。} 
+screen.text at point {50}  {250} string {简单网络管理语言是一种类自然语言的脚本语言，它采用snmp、telnet、ping、dns、arp、ssh、}
+screen.speak {简单网络管理语言是一种类自然语言的脚本语言，它采用snmp、telnet、ping、dns、arp、ssh、}
+screen.text at point {30}  {275} string {tcp、udp、web等协议与网络设备的互动，内置了smtp协议用于告警等邮件的发送，}
+screen.speak {tcp、udp、web等协议与网络设备的互动，内置了smtp协议用于告警等邮件的发送，}
+screen.text at point {130}  {300} string {支持excel、mysql、sqlite等3种方式进行管理信息数据的存取。}
+screen.speak {支持excel、mysql、sqlite等3种方式进行管理信息数据的存取。}
+screen.save to file {C:\snmlipv6\tmp\snml_1.png}  from point  {0}   {0}  to point  {640}   {480} 
+run.end
+
+macro.begin {draw_ladybird} 	
+	#var {x} value {0}
+	#var {y} value {0}	
+	screen.set mode {stroke}
+	screen.set color red {0}  green {0}  blue {0} 
+	#screen.rect from point {0}   {0}  to point {127}   {127} 
+	screen.set color red {255}  green {0}  blue {0} 
+	screen.set mode {fill}
+
+	var  {x1}  value number  {~x~+60} 
+	var  {y1}  value number  {~y~+78} 
+	screen.arc at point  {~x1~}   {~y1~}  radius {50}  from {0}  to {360} 
+	screen.set color red {0}  green {0}  blue {0} 
+
+	var  {x1}  value number  {~x~+60} 
+	var  {y1}  value number  {~y~+33} 
+	screen.arc at point   {~x1~}   {~y1~}  radius {25}  from {180}  to {360} 
+
+	var  {x1}  value number  {~x~+60} 
+	var  {y1}  value number  {~y~+28} 
+	screen.set color red {0}  green {0}  blue {0} 
+	screen.arc at point {~x1~}   {~y1~}  radius {100}  from {85}  to {95} 
+
+	var  {x1}  value number  {~x~+60} 
+	var  {y1}  value number  {~y~+33} 
+	var  {x2}  value number  {~x~+80} 
+	var  {y2}  value number  {~y~+5}
+
+	screen.line from point  {~x1~}   {~y1~}  to point  {~x2~}   {~y2~} 
+	var  {x2}  value number  {~x~+40} 
+	screen.line from point  {~x1~}   {~y1~}  to point  {~x2~}   {~y2~} 
+
+	var  {x1}  value number  {~x~+80} 
+	var  {y1}  value number  {~y~+5} 
+	screen.arc at point {~x1~}   {~y1~}  radius {2}  from {0}  to {360} 
+	var  {x1}  value number  {~x~+40} 
+	screen.arc at point {~x1~}   {~y1~}  radius {2}  from {0}  to {360} 
+
+	screen.set color red {255}  green {255}  blue {255} 
+
+	var  {x1}  value number  {~x~+48} 
+	var  {y1}  value number  {~y~+20} 
+	screen.arc at point  {~x1~}   {~y1~}  radius {5}  from {0}  to {360} 
+	var  {x1}  value number  {~x~+72} 
+	screen.arc at point  {~x1~}   {~y1~}  radius {5}  from {0}  to {360} 
+
+	screen.set color red {0}  green {0}  blue {0} 
+
+	var  {x1}  value number  {~x~+48} 
+	var  {y1}  value number  {~y~+19} 
+	screen.arc at point {~x1~}   {~y1~}  radius {3}  from {0}  to {360} 
+
+	var  {x1}  value number  {~x~+72} 
+	screen.arc at point {~x1~}   {~y1~}  radius {3}  from {0}  to {360} 
+
+	var  {x1}  value number  {~x~+60} 
+	var  {y1}  value number  {~y~+43} 
+	screen.arc at point {~x1~}   {~y1~}  radius {10}  from {0}  to {360} 
+
+	var  {x1}  value number  {~x~+90} 
+	var  {y1}  value number  {~y~+59} 
+	screen.arc at point {~x1~}   {~y1~}  radius {8}  from {0}  to {360} 
+	var  {x1}  value number  {~x~+30} 
+	screen.arc at point {~x1~}   {~y1~}  radius {8}  from {0}  to {360} 
+
+	var  {x1}  value number  {~x~+75} 
+	var  {y1}  value number  {~y~+73} 
+	screen.arc at point {~x1~}   {~y1~}   radius {8}  from {0}  to {360} 
+	var  {x1}  value number  {~x~+45} 
+	screen.arc at point {~x1~}   {~y1~}   radius {8}  from {0}  to {360} 
+
+	var  {x1}  value number  {~x~+90} 
+	var  {y1}  value number  {~y~+100} 
+	screen.arc at point {~x1~}   {~y1~}  radius {8}  from {0}  to {360} 
+	var  {x1}  value number  {~x~+30} 
+	screen.arc at point {~x1~}   {~y1~}  radius {8}  from {0}  to {360} 
+macro.end

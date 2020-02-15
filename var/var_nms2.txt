@@ -1,0 +1,29 @@
+screen.set color red {0} green {0} blue {0} 
+screen.text at point {150}  {30} string {18、var测试：var.add、var.copy、var.replace、datetime、number} 
+run.set loglevel {debug} 
+screen.speak {18、var测试：var.add、var.copy、var.replace、datetime、number} 
+var {v_y} value {60} 
+screen.text at point {10}  {~v_y~} string {序号} 
+screen.text at point {100}  {~v_y~} string {以1-0,a-g为例，演示var相关功能}
+screen.line from point {10}  {75} to point {630}  {75} 
+var {i} value {0} 
+var {x} value {0} 
+var {y} value {0}
+var {test} value {1234567890,abcdefg,1234567890,abcdefg} 
+loop.begin 
+	var {i} add number {1} 
+	var {t1} value datetime
+	var {y} value number {70+28*~i~}
+	screen.text at point {5}  {~y~} string {第~i~行：} 
+	#run.set loglevel {debug}
+	var {test} add  {第~i~次,}
+	var {test} replace  {2} with {二}
+	var {test1} copy var  {test}
+	run.set loglevel {nolog} 
+	screen.text at point {20}  {~y~} string {~t1~:~test~} 	
+		
+	if.var {i} >= {9}		
+		loop.exit
+	if.end
+loop.end
+run.end

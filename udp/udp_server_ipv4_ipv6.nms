@@ -1,0 +1,37 @@
+
+screen.text at point {150}  {30} string {13.2 udp.server ( ipv4 & ipv6 ) Test} 
+var {v_y} value {60} 
+screen.text at point {10}  {~v_y~} string {No.} 
+screen.text at point {50}  {~v_y~} string {udp.server} 
+screen.line from point {10}  {75} to point {160}  {75} 
+screen.text at point {200}  {~v_y~} string {udp.send} 
+screen.line from point {180}  {75} to point {270}  {75} 
+screen.text at point {300}  {~v_y~} string {udp.recv} 
+screen.line from point {300}  {75} to point {630}  {75} 
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+#run.set loglevel {debug}
+udp.server listen port {~run.arg.4~}
+
+	var {v_i} add number {1} 
+	var {v_y} add number {18} 
+
+	var {v_time} value datetime 
+
+	text.headpointer move to tail
+	text.tailpointer move to tail
+	udp.recv {1}  packets
+	udp.recv {1}  seconds
+	text.tailpointer move to tail
+
+	udp.send {udp.server:~run.arg.4~,~v_i~[~v_time~]%0d%0a} 
+	udp.send text
+	udp.send {%0d%0aserver.end%0d%0a} 
+
+	screen.text at point {10}  {~v_y~} string {~v_i~} 
+	screen.text at point {50}  {~v_y~} string { recv: ~udp.client.ip~:~udp.client.port~} 
+	screen.text at point {280}  {~v_y~} string { send: udp.server:~run.arg.4~} 
+
+	udp.close
+run.end

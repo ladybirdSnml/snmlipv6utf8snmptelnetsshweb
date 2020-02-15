@@ -1,0 +1,1 @@
+C:\snmlipv6\snml.exe nolog C:\snmlipv6\tcp\tcp_server_ipv4.nms 50001

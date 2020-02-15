@@ -1,0 +1,34 @@
+screen.set color red {0} green {0} blue {0} 
+screen.text at point {150}  {30} string {20. sys Test} 
+var {v_y} value {60} 
+
+screen.text at point {10}  {~v_y~} string {No.} 
+screen.text at point {250}  {~v_y~} string {Test Information} 
+screen.line from point {10}  {75} to point {50}  {75} 
+screen.line from point {70}  {75} to point {630}  {75} 
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+
+var {v_i} add number {1} 
+var {v_y} add number {18}
+screen.text at point {10}  {~v_y~} string {~v_i~}  	
+sys.command {ping www.126.com} 
+screen.text at point {70}  {~v_y~} string {v_time=~v_time~,  sys.command(ping www.126.com), step.bytes=[~step.bytes~], text.bytes=[~text.bytes~]} 
+
+var {v_i} add number {1} 
+var {v_y} add number {18} 
+screen.text at point {10}  {~v_y~} string {~v_i~} 	
+sys.command {ipconfig /all} 
+screen.text at point {70}  {~v_y~} string {v_time=~v_time~,  sys.command(ipconfig /all), step.bytes=[~step.bytes~], text.bytes=[~text.bytes~]} 
+
+var {v_i} add number {1} 
+var {v_y} add number {18} 
+screen.text at point {10}  {~v_y~} string {~v_i~} 
+sys.execute open {cmd} 			
+sys.execute send {dir c:\ %0d%0a} 
+sys.execute recv expect {snmlipv6} 
+screen.text at point {70}  {~v_y~} string {v_time=~v_time~,  sys.execute(cmd->dir)), step.bytes=[~step.bytes~], text.bytes=[~text.bytes~]} 
+sys.execute close
+	
+run.end

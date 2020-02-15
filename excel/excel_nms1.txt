@@ -1,0 +1,33 @@
+﻿screen.text at point {250}  {30} string {11. excel Test} 
+var {v_y} value {60} 
+screen.text at point {50}  {~v_y~} string {Write Col: C,D} 
+screen.line from point {10}  {75} to point {180}  {75} 
+screen.text at point {220}  {~v_y~} string {Read Col: IP} 
+screen.line from point {200}  {75} to point {340}  {75} 
+screen.text at point {350}  {~v_y~} string {Read Col: MAC} 
+screen.line from point {350}  {75} to point {630}  {75} 
+excel.open {C:\snmlipv6\excel\snml.xlsx} sheet {Sheet1} 
+var {v_time} value datetime 
+var {v_i} value {1} 
+loop.begin 
+	var {v_i} add number {1} 
+	var {v_y} add number {18} 
+	if.var {v_y} > {200} 
+		loop.exit
+	if.end
+	var {v_time} value datetime 
+	screen.text at point {10}  {~v_y~} string {~v_i~} 
+	screen.text at point {50}  {~v_y~} string {~v_time~} 
+	excel.cell {D~v_i~} value {[~v_time~]} 
+	excel.cell {E~v_i~} value {UTF8中文测试~v_i~} 
+
+	excel.get var {excel.B} cell {B~v_i~} 
+	screen.text at point {200}  {~v_y~} string {~excel.B~}
+	arp.get var {arp_ip_mac} ip {~excel.B~} 	
+ 	excel.cell {C~v_i~} value {~arp_ip_mac~} 
+	excel.get var {excel.C} cell {C~v_i~} 
+	screen.text at point {350}  {~v_y~} string {~excel.C~} 
+	
+loop.end
+excel.close
+run.end

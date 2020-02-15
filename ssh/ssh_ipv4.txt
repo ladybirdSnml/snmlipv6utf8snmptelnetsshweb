@@ -1,0 +1,39 @@
+screen.text at point {150}  {30} string {15. ssh (ipv4) Test, (use ssh you need to get ssh.key License File)} 
+var {v_y} value {60} 
+screen.text at point {10}  {~v_y~} string {No.                  server ip:port        send command                       recv         } 
+
+screen.line from point {10}  {75} to point {30}  {75} 
+screen.line from point {50}  {75} to point {270}  {75} 
+screen.line from point {300}  {75} to point {630}  {75} 
+
+screen.text at point {10}  {425} string {1. run ssh_req.bat  2. send email with file ssh_req.txt%0d%0a}
+screen.text at point {10}  {450} string  {email1: ladybird_snml@protonmail.com, email2:  ladybird_snml@hotmail.com%0d%0a}
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+run.set loglevel {debug}
+loop.begin 
+
+	var {v_i} add number {1} 
+	var {v_y} add number {18} 
+
+	ssh.connect ip {192.168.186.132} port {22} username {cisco} password {cisco} 
+	ssh.set onrecv  {-More-} send { %0a} 	
+	ssh.recv for {3} seconds
+	ssh.send {show version%0a}
+	ssh.recv expect {Version} 
+	ssh.recv for {3} seconds		
+	ssh.close
+	text.headpointer move to head
+	text.tailpointer move to tail
+	text.save append to file {C:\snmlipv6\ssh\ssh_out_ipv4~v_i~.txt}
+	screen.text at point {10}  {~v_y~} string {~v_i~} 
+	screen.text at point {50}  {~v_y~} string {192.168.186.132:22 send 'show version'} 
+	screen.text at point {300}  {~v_y~} string {ssh.recv  : ~text.bytes~ Bytes } 
+	text.delete from headpointer
+
+	if.var {v_y} > {100}		
+		loop.exit
+	if.end
+loop.end
+run.end
